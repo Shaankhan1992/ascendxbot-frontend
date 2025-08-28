@@ -17,7 +17,7 @@ export default function Login({ onLogin }) {
       alert('Login failed: ' + error.message);
     } else {
       alert('Login successful!');
-      onLogin(data); // parent component ko user data bhej do
+      onLogin(data);
     }
   };
 
