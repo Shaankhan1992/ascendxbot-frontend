@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html> 
 <html lang="en">  
 <head>  
   <meta charset="utf-8" />  
@@ -36,7 +36,10 @@
   <header class="flex justify-between items-center p-4 bg-[#0f1620] shadow-card">
     <div class="flex items-center gap-2">
       <img src="src/assets/logo.png" alt="GrowBot Logo" class="w-14 h-14">
-      <span class="font-bold text-2xl">GrowBot</span>
+      <div>
+        <span class="font-bold text-2xl">GrowBot</span><br>
+        <span class="text-sm text-white/60">Smart Bot for Smart Income</span>
+      </div>
     </div>
     <nav class="space-x-6 hidden md:block">
       <a href="#about" class="hover:text-gb-500">About</a>
@@ -126,7 +129,8 @@
         <input class="inpt" type="email" placeholder="Email" required />  
         <input class="inpt" type="tel" placeholder="Mobile Number" required />  
         <input class="inpt" type="password" placeholder="Password" required />  
-        <input class="inpt" type="text" placeholder="Referral Code (optional)" />  
+        <!-- ✅ Referral Code compulsory -->
+        <input class="inpt" type="text" placeholder="Referral Code" required />  
         <button type="submit" class="btn-primary w-full">Register</button>  
       </form>  
       <p class="text-xs text-white/70 mt-4 text-center">Already have an account?  
@@ -146,4 +150,4 @@
     document.getElementById("year").innerText = new Date().getFullYear();
   </script>
 </body>  
-  </html>
+</html>
