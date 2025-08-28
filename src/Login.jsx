@@ -6,18 +6,16 @@ export default function Login({ onLogin }) {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    const { data, error } = await supabase
-      .from('users')
-      .select('*')
-      .eq('email', email)
-      .eq('password', password)
-      .single();
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
     if (error) {
       alert('Login failed: ' + error.message);
     } else {
       alert('Login successful!');
-      onLogin(data);
+      onLogin(data.user); // ✅ ye App.jsx ko user bhejega aur dashboard open karega
     }
   };
 
@@ -38,7 +36,10 @@ export default function Login({ onLogin }) {
         onChange={(e) => setPassword(e.target.value)}
         className="border p-2 w-full mb-4"
       />
-      <button onClick={handleLogin} className="bg-green-500 text-white px-4 py-2 rounded">
+      <button
+        onClick={handleLogin}
+        className="bg-green-500 text-white px-4 py-2 rounded"
+      >
         Login
       </button>
     </div>
