@@ -12,10 +12,10 @@ export default function App() {
   if (admin) return <AdminDashboard />;
   if (!user)
     return (
-      <div>
+      <div className="min-h-screen flex flex-col items-center justify-center">
         <Login onLogin={(u) => setUser(u)} />
         <Register />
-        <hr className="my-4" />
+        <hr className="my-4 w-96 border-gray-300" />
         <AdminLogin onAdminLogin={(a) => setAdmin(a)} />
       </div>
     );
