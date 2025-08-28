@@ -9,18 +9,19 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [admin, setAdmin] = useState(null);
 
+  // Agar admin logged in → Admin Dashboard
   if (admin) return <AdminDashboard />;
 
-  if (!user) {
-    return (
-      <div>
-        <Login onLogin={(u) => setUser(u)} />
-        <Register />
-        <hr className="my-4" />
-        <AdminLogin onAdminLogin={(a) => setAdmin(a)} />
-      </div>
-    );
-  }
+  // Agar user logged in → Dashboard
+  if (user) return <Dashboard userId={user.id} />;
 
-  return <Dashboard userId={user.id} />;
+  // Agar koi login nahi → show login forms
+  return (
+    <div>
+      <Login onLogin={(u) => setUser(u)} />
+      <Register />
+      <hr className="my-4" />
+      <AdminLogin onAdminLogin={(a) => setAdmin(a)} />
+    </div>
+  );
 }
