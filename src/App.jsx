@@ -1,22 +1,25 @@
-import React, { useEffect } from 'react';
-import { supabase } from './supabaseClient';
+import React, { useState } from 'react';
+import Login from './Login';
+import Register from './Register';
+import Dashboard from './Dashboard';
+import AdminLogin from './AdminLogin';
+import AdminDashboard from './AdminDashboard';
 
-function App() {
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const { data, error } = await supabase.from('users').select('*');
-      if (error) console.error('Error:', error);
-      else console.log('Users:', data);
-    };
-    fetchUsers();
-  }, []);
+export default function App() {
+  const [user, setUser] = useState(null);
+  const [admin, setAdmin] = useState(null);
 
-  return (
-    <div className="p-4">
-      <h1>Supabase Test Connection</h1>
-      <p>Check console for users data.</p>
-    </div>
-  );
+  if (admin) return <AdminDashboard />;
+
+  if (!user)
+    return (
+      <div>
+        <Login onLogin={(u) => setUser(u)} />   {/* ✅ user set hoga */}
+        <Register />
+        <hr className="my-4" />
+        <AdminLogin onAdminLogin={(a) => setAdmin(a)} />
+      </div>
+    );
+
+  return <Dashboard user={user} />;  // ✅ dashboard dikhega
 }
-
-export default App;
