@@ -1,0 +1,18 @@
+.link{ @apply text-white/85 hover:text-gb-300 transition; }
+.btn-primary{ @apply inline-flex items-center justify-center px-4 py-2 rounded-xl bg-gb-500 hover:bg-gb-400 text-black font-semibold shadow-neon;}
+.btn-outline{ @apply inline-flex items-center justify-center px-4 py-2 rounded-xl border border-gb-500/40 text-gb-200 hover:bg-gb-500/10;}
+.btn-ghost{ @apply inline-flex items-center justify-center px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10;}
+.m-link{ @apply block px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10;}
+.sec-title{ @apply text-3xl md:text-4xl font-extrabold;}
+.sec-sub{ @apply text-white/70 mt-2;}
+.card{ @apply relative rounded-3xl bg-[#0f1620] border border-white/10 p-6 shadow-card hover:-translate-y-1 hover:shadow-neon transition;}
+.card-active{ @apply bg-[#0b1320] border-gb-500/30 ring-1 ring-gb-500/20;}
+.icon{ @apply text-2xl mb-3;}
+.card-title{ @apply text-xl font-bold;}
+.card-text{ @apply text-white/75 mt-2;}
+.inpt{ @apply w-full rounded-xl bg-white/5 border border-white/10 px-4 py-2 outline-none focus:border-gb-400;}
+/* Modals */
+.modal{ position: fixed; inset:0; display:none; align-items:center; justify-content:center; background: rgba(0,0,0,.6); backdrop-filter: blur(2px); z-index:60;}
+.modal.show{ display:flex; }
+.modal-panel{ position:relative; width:100%; max-width:380px; background:#0f1620; border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:20px; box-shadow:0 20px 60px rgba(0,0,0,.5);}
+.modal-close{ position:absolute; top:8px; right:10px; width:32px; height:32px; border-radius:10px; background:rgba(255,255,255,.06); }
