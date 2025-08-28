@@ -1,14 +1,49 @@
+import { supabase } from './supabaseClient';
+import { useState } from 'react';
+
 export default function Login({ onLogin }) {
-  const handleLogin = () => {
-    const dummyUser = { id: '1', name: 'Test User', email: 'test@example.com' };
-    alert('Login successful!');
-    onLogin(dummyUser); // Ye App.jsx me dashboard open karega
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    const { data, error } = await supabase
+      .from('users')
+      .select('*')
+      .eq('email', email)
+      .eq('password', password)
+      .single();
+
+    if (error || !data) {
+      alert('Login failed: Email or password incorrect');
+    } else {
+      alert('Login successful!');
+      onLogin(data); // Dashboard me user data bhej dega
+    }
   };
 
   return (
     <div className="p-4 border rounded w-96 mx-auto my-10">
-      <h2>User Login</h2>
-      <button onClick={handleLogin}>Login</button>
+      <h2 className="text-xl font-bold mb-4">User Login</h2>
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="border p-2 w-full mb-2"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="border p-2 w-full mb-4"
+      />
+      <button
+        onClick={handleLogin}
+        className="bg-green-500 text-white px-4 py-2 rounded"
+      >
+        Login
+      </button>
     </div>
   );
 }
