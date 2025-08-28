@@ -6,6 +6,7 @@ export default function Login({ onLogin }) {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
+    // Supabase Auth se login
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -13,9 +14,9 @@ export default function Login({ onLogin }) {
 
     if (error) {
       alert('Login failed: ' + error.message);
-    } else {
+    } else if (data.user) {
       alert('Login successful!');
-      onLogin(data.user); // ✅ ye App.jsx ko user bhejega aur dashboard open karega
+      onLogin(data.user); // ✅ Dashboard ke liye user state set hoga
     }
   };
 
