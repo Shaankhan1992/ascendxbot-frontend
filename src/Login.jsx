@@ -1,29 +1,39 @@
-import { useState } from "react";
-import { supabase } from "./supabaseClient";
+import React, { useState } from 'react';
+import { supabase } from './supabaseClient';
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function Login({ onLogin }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    if (error) {
-      alert(error.message);
-    } else {
-      alert("Login successful!");
-      console.log(data);
-    }
+    const { user, error } = await supabase.auth.signIn({ email, password });
+    if (error) return alert(error.message);
+
+    onLogin(user); // App.jsx me state update karke Dashboard dikhayega
   };
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleLogin}>Login</button>
+    <div className="p-4 max-w-md mx-auto mt-10">
+      <h2 className="text-2xl font-bold mb-4">Login</h2>
+      <input
+        className="w-full p-2 mb-2 border rounded"
+        placeholder="Email"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        className="w-full p-2 mb-2 border rounded"
+        placeholder="Password"
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+      />
+      <button
+        className="bg-green-500 text-white px-4 py-2 rounded"
+        onClick={handleLogin}
+      >
+        Login
+      </button>
     </div>
   );
-    }
+}
