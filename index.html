@@ -5,83 +5,28 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />  
   <title>GrowBot — Smart Bot for Smart Income</title>  
   <meta name="description" content="GrowBot: AI-powered automation for smarter trading & passive income." />  
-  <link rel="icon" href="logo.png" />  
-  <!-- Tailwind via CDN (no build needed) -->  
+  <link rel="icon" href="src/assets/logo.png" />  
   <script src="https://cdn.tailwindcss.com"></script>  
   <script>  
     tailwind.config = {  
       theme: {  
         extend: {  
-          colors: {  
-            gb: {  
-              50:  '#eafff3',  
-              100: '#c9ffe4',  
-              200: '#94ffc9',  
-              300: '#53f5a7',  
-              400: '#1de58a',  
-              500: '#07cc73',  
-              600: '#08a963',  
-              700: '#0a8651',  
-              800: '#0b6b43',  
-              900: '#094f34',  
-            }  
-          },  
-          boxShadow: {  
-            neon: '0 0 25px rgba(7,204,115,0.35)',  
-            card: '0 10px 30px rgba(0,0,0,0.35)'  
-          },  
-          backdropBlur: { xs: '2px' }  
+          colors: { gb: { 500:'#07cc73',600:'#08a963' } },  
+          boxShadow: { card:'0 10px 30px rgba(0,0,0,0.35)' }  
         }  
-      },  
-      darkMode: 'class'  
+      }  
     }  
   </script>  
   <style>
-    .inpt {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 10px;
-      background-color: #1a2433;
-      color: white;
-      border: 1px solid rgba(255,255,255,0.2);
-      outline: none;
-      transition: all 0.3s;
-    }
-    .inpt::placeholder {
-      color: rgba(255,255,255,0.6);
-    }
-    .inpt:focus {
-      border-color: #07cc73;
-      box-shadow: 0 0 10px rgba(7,204,115,0.4);
-    }
-    .modal { display: none; }
-    .modal.active { display: flex; }
-    .modal-panel {
-      background-color: #0f1620;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-      width: 100%;
-      max-width: 400px;
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      color: rgba(255,255,255,0.6);
-      cursor: pointer;
-    }
-    .btn-primary {
-      background-color: #07cc73;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: all 0.3s;
-    }
-    .btn-primary:hover {
-      background-color: #08a963;
-    }
+    .inpt { width:100%;padding:12px 14px;border-radius:10px;background:#1a2433;color:white;
+      border:1px solid rgba(255,255,255,0.2);outline:none;transition:0.3s; }
+    .inpt::placeholder { color:rgba(255,255,255,0.6); }
+    .inpt:focus { border-color:#07cc73;box-shadow:0 0 10px rgba(7,204,115,0.4); }
+    .modal{display:none}.modal.active{display:flex}
+    .modal-panel{background:#0f1620;padding:2rem;border-radius:1rem;box-shadow:0 10px 30px rgba(0,0,0,0.35);width:100%;max-width:400px;position:relative}
+    .modal-close{position:absolute;top:10px;right:15px;color:rgba(255,255,255,0.6);cursor:pointer}
+    .btn-primary{background:#07cc73;padding:10px;border-radius:8px;font-weight:bold;transition:0.3s}
+    .btn-primary:hover{background:#08a963}
   </style>
 </head>  
 
@@ -90,44 +35,65 @@
   <!-- ✅ Navbar -->
   <header class="flex justify-between items-center p-4 bg-[#0f1620] shadow-card">
     <div class="flex items-center gap-2">
-      <img src="logo.png" alt="GrowBot Logo" class="w-10 h-10">
-      <span class="font-bold text-xl">GrowBot</span>
+      <img src="src/assets/logo.png" alt="GrowBot Logo" class="w-14 h-14">
+      <span class="font-bold text-2xl">GrowBot</span>
     </div>
     <nav class="space-x-6 hidden md:block">
-      <a href="#about" class="hover:text-gb-400">About</a>
-      <a href="#features" class="hover:text-gb-400">Features</a>
-      <a href="#contact" class="hover:text-gb-400">Contact</a>
+      <a href="#about" class="hover:text-gb-500">About</a>
+      <a href="#features" class="hover:text-gb-500">Features</a>
+      <a href="#contact" class="hover:text-gb-500">Contact</a>
     </nav>
     <button onclick="openModal('loginModal')" class="btn-primary">Login</button>
   </header>
 
   <!-- ✅ Hero Section -->
-  <section class="text-center py-20 bg-[#0f1620]">
-    <h1 class="text-4xl md:text-6xl font-bold mb-6">Smart Bot for Smart Income</h1>
-    <p class="text-lg mb-8 text-white/70">AI-powered trading bot to grow your wealth 24/7</p>
-    <img src="hero-1.jpg" alt="Hero Image" class="mx-auto rounded-2xl shadow-neon max-w-4xl">
+  <section class="text-center py-20 bg-[#0f1620] px-4">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome to the Future of AI-Powered Trading</h1>
+    <p class="text-lg max-w-3xl mx-auto mb-8 text-white/70">
+      GrowBot is an advanced AI trading bot designed to deliver unmatched accuracy and profitability in Forex and Crypto markets.
+      With cutting-edge algorithms, automation, and data-driven decision making, GrowBot ensures you never miss a profitable opportunity.
+      👉 Make your trading smart, fast, and 100% accurate.
+    </p>
+    <img src="src/assets/hero-1.jpg" alt="Hero Image" class="mx-auto rounded-2xl shadow-card max-w-4xl">
+  </section>
+
+  <!-- ✅ About Section -->
+  <section id="about" class="py-20 px-6 md:px-20 bg-[#0a0f14] text-center">
+    <h2 class="text-3xl font-bold mb-6">About GrowBot</h2>
+    <p class="text-white/70 max-w-4xl mx-auto leading-relaxed">
+      GrowBot is an AI-based trading system that revolutionizes the way you trade in Forex and Cryptocurrency markets.
+      Unlike manual trading, GrowBot eliminates emotional bias, reduces human error, and executes trades with lightning speed.
+      Built with the latest AI + Machine Learning algorithms, GrowBot analyzes real-time data, market trends, and executes trades automatically to maximize profits.
+    </p>
   </section>
 
   <!-- ✅ Features -->
-  <section id="features" class="py-20 px-6 md:px-20 bg-[#0a0f14]">
-    <h2 class="text-3xl font-bold text-center mb-12">Features</h2>
+  <section id="features" class="py-20 px-6 md:px-20 bg-[#0f1620]">
+    <h2 class="text-3xl font-bold text-center mb-12">Key Features</h2>
     <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-[#0f1620] p-6 rounded-xl shadow-card text-center">
-        <img src="feature-1.jpg" alt="Feature 1" class="rounded-lg mb-4">
+      <div class="bg-[#0a0f14] p-6 rounded-xl shadow-card text-center">
+        <img src="src/assets/feature-1.jpg" alt="Feature 1" class="rounded-lg mb-4 mx-auto">
         <h3 class="text-xl font-bold">Automation</h3>
         <p class="text-white/70 mt-2">Fully automated trading strategies tailored for you.</p>
       </div>
-      <div class="bg-[#0f1620] p-6 rounded-xl shadow-card text-center">
-        <img src="feature-2.jpg" alt="Feature 2" class="rounded-lg mb-4">
+      <div class="bg-[#0a0f14] p-6 rounded-xl shadow-card text-center">
+        <img src="src/assets/feature-2.jpg" alt="Feature 2" class="rounded-lg mb-4 mx-auto">
         <h3 class="text-xl font-bold">Security</h3>
         <p class="text-white/70 mt-2">Your assets stay safe with bank-level encryption.</p>
       </div>
-      <div class="bg-[#0f1620] p-6 rounded-xl shadow-card text-center">
-        <img src="feature-3.jpg" alt="Feature 3" class="rounded-lg mb-4">
+      <div class="bg-[#0a0f14] p-6 rounded-xl shadow-card text-center">
+        <img src="src/assets/feature-3.jpg" alt="Feature 3" class="rounded-lg mb-4 mx-auto">
         <h3 class="text-xl font-bold">Smart Insights</h3>
         <p class="text-white/70 mt-2">AI-driven insights to maximize your growth.</p>
       </div>
     </div>
+  </section>
+
+  <!-- ✅ Contact -->
+  <section id="contact" class="py-20 px-6 md:px-20 bg-[#0a0f14] text-center">
+    <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
+    <p class="text-white/70 mb-4">📍 10 Anson Road, International Plaza, Singapore 079903</p>
+    <p class="text-white/70">📧 contact@growbot.ai</p>
   </section>
 
   <!-- ✅ Footer -->
@@ -138,14 +104,14 @@
   <!-- ✅ Login Modal -->
   <div id="loginModal" class="modal fixed inset-0 bg-black/70 backdrop-blur-sm items-center justify-center z-50">  
     <div class="modal-panel">  
-      <h3 class="text-2xl font-bold text-center mb-6 text-gb-400">Login</h3>  
+      <h3 class="text-2xl font-bold text-center mb-6 text-gb-500">Login</h3>  
       <form id="loginForm" class="space-y-4">  
         <input class="inpt" type="text" placeholder="Email or Mobile" required />  
         <input class="inpt" type="password" placeholder="Password" required />  
         <button type="submit" class="btn-primary w-full">Login</button>  
       </form>  
       <p class="text-xs text-white/70 mt-4 text-center">New here?  
-        <button class="text-gb-300 hover:underline" onclick="switchModal('loginModal','signupModal')">Register Now</button>  
+        <button class="text-gb-500 hover:underline" onclick="switchModal('loginModal','signupModal')">Register Now</button>  
       </p>  
       <button class="modal-close" onclick="closeModal('loginModal')">✕</button>  
     </div>  
@@ -154,7 +120,7 @@
   <!-- ✅ Signup Modal -->
   <div id="signupModal" class="modal fixed inset-0 bg-black/70 backdrop-blur-sm items-center justify-center z-50">  
     <div class="modal-panel">  
-      <h3 class="text-2xl font-bold text-center mb-6 text-gb-400">Create Account</h3>  
+      <h3 class="text-2xl font-bold text-center mb-6 text-gb-500">Create Account</h3>  
       <form id="signupForm" class="space-y-4">  
         <input class="inpt" type="text" placeholder="Full Name" required />  
         <input class="inpt" type="email" placeholder="Email" required />  
@@ -164,7 +130,7 @@
         <button type="submit" class="btn-primary w-full">Register</button>  
       </form>  
       <p class="text-xs text-white/70 mt-4 text-center">Already have an account?  
-        <button class="text-gb-300 hover:underline" onclick="switchModal('signupModal','loginModal')">Login</button>  
+        <button class="text-gb-500 hover:underline" onclick="switchModal('signupModal','loginModal')">Login</button>  
       </p>  
       <button class="modal-close" onclick="closeModal('signupModal')">✕</button>  
     </div>  
@@ -172,29 +138,12 @@
 
   <!-- ✅ Scripts -->
   <script>
-    function openModal(id) {
-      document.getElementById(id).classList.add("active");
-      document.getElementById(id).classList.add("flex");
-    }
-    function closeModal(id) {
-      document.getElementById(id).classList.remove("active");
-      document.getElementById(id).classList.remove("flex");
-    }
-    function switchModal(closeId, openId) {
-      closeModal(closeId);
-      openModal(openId);
-    }
-    // Dummy submit actions
-    document.getElementById("loginForm")?.addEventListener("submit", e => {
-      e.preventDefault();
-      alert("✅ Logged in successfully (backend required)");
-    });
-    document.getElementById("signupForm")?.addEventListener("submit", e => {
-      e.preventDefault();
-      alert("✅ Registered successfully. Please verify your email.");
-    });
-    // Footer year
+    function openModal(id){document.getElementById(id).classList.add("active","flex");}
+    function closeModal(id){document.getElementById(id).classList.remove("active","flex");}
+    function switchModal(c,o){closeModal(c);openModal(o);}
+    document.getElementById("loginForm")?.addEventListener("submit",e=>{e.preventDefault();alert("✅ Logged in successfully (backend required)");});
+    document.getElementById("signupForm")?.addEventListener("submit",e=>{e.preventDefault();alert("✅ Registered successfully. Please verify your email.");});
     document.getElementById("year").innerText = new Date().getFullYear();
   </script>
 </body>  
-</html>
+  </html>
