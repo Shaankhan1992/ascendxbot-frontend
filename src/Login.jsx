@@ -6,16 +6,29 @@ export default function Login({ onLogin }) {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    const { data, error } = await supabase.auth.signInWithPassword({
+    // Supabase Auth se login attempt
+    const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    if (error) {
-      alert('Login failed: ' + error.message);
+    if (authError) {
+      alert('Login failed: ' + authError.message);
+      return;
+    }
+
+    // ✅ User object fetch karna
+    const { data: userData, error: userError } = await supabase
+      .from('users')
+      .select('id, name, email, phone') // required fields
+      .eq('email', email)
+      .single();
+
+    if (userError) {
+      alert('Failed to fetch user data: ' + userError.message);
     } else {
       alert('Login successful!');
-      onLogin(data.user); // ✅ App.jsx me user set hoga
+      onLogin(userData); // Dashboard me redirect
     }
   };
 
@@ -45,4 +58,3 @@ export default function Login({ onLogin }) {
     </div>
   );
 }
-
