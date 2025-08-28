@@ -1,5 +1,5 @@
-import { supabase } from './supabaseClient';
 import { useState } from 'react';
+import { supabase } from './supabaseClient';
 
 export default function Login({ onLogin }) {
   const [email, setEmail] = useState('');
@@ -14,8 +14,8 @@ export default function Login({ onLogin }) {
     if (error) {
       alert('Login failed: ' + error.message);
     } else {
-      // ✅ Redirect trigger: pass user to App.jsx
-      onLogin(data.user);
+      alert('Login successful!');
+      onLogin(data.user); // ✅ App.jsx me user set hoga
     }
   };
 
@@ -45,3 +45,4 @@ export default function Login({ onLogin }) {
     </div>
   );
 }
+
