@@ -1,11 +1,13 @@
-if (!user) {
-  return (
-    <div>
-      <Login onLogin={(u) => setUser(u)} />
-      <Register />
-      <hr className="my-4" />
-      <AdminLogin onAdminLogin={(a) => setAdmin(a)} />
-    </div>
-  );
+import React, { useState } from "react";
+import Login from "./Login";
+import Dashboard from "./Dashboard";
+
+export default function App() {
+  const [user, setUser] = useState(null);
+
+  if (!user) {
+    return <Login onLogin={(u) => setUser(u)} />;
+  }
+
+  return <Dashboard user={user} />;
 }
-return <Dashboard user={user} />;
